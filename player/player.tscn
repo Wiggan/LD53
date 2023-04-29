@@ -29,3 +29,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_i1pd6")
+
+[node name="NetCooldownTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,12 +1,12 @@
 palette: https://lospec.com/palette-list/cc-29
 
 assets:
-	2 drones
-	3 packages
-	net gun
-	net (4 balls with wireframe plane, animated?)
-	factory building
-	trees
+	2 drones x
+	3 packages x
+	net gun x
+	net (4 balls with wireframe plane, animated?) x
+	factory building x
+	trees x
 	
 sfx:
 	menu click
@@ -23,8 +23,7 @@ music:
 features:
 	score
 	intro - Somniac LTD is pushing drugs on mankind, stop their deliveries and make people wake up again.
-	upgrades - reload time, net impulse, net size?
-	how to play - explain boxes (small delivery, big delivery, upgrades)
-	aim - maybe with distance marks for gravity compensation?
+	how to play - explain boxes (small delivery, big delivery, upgrades) 
+	aim - maybe with distance marks for gravity compensation? x
 	cursor
-	
+	UI
