@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=3 uid="uid://bg4kyjiupg1ij"]
+
+[ext_resource type="Script" path="res://player/net.gd" id="1_ffu6l"]
+[ext_resource type="PackedScene" uid="uid://4hv0q0q7j710" path="res://player/net.glb" id="2_ow0r3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y8o0h"]
+radius = 1.687
+
+[sub_resource type="Animation" id="Animation_513e0"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -3.14159, 6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_ue84f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksfx"]
+_data = {
+"RESET": SubResource("Animation_ue84f"),
+"spin": SubResource("Animation_513e0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wvatr"]
+animation = &"fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_scgkx"]
+animation = &"impact"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u2iax"]
+animation = &"launch"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pbj4j"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_pp5rf"]
+xfade_time = 0.2
+input_0/name = "state_0"
+input_0/auto_advance = true
+input_0/reset = true
+input_1/name = "state_1"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "state_2"
+input_2/auto_advance = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsiw0"]
+graph_offset = Vector2(-668, -39)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_u2iax")
+nodes/Animation/position = Vector2(-460, 60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_wvatr")
+"nodes/Animation 2/position" = Vector2(-320, 160)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_scgkx")
+"nodes/Animation 3/position" = Vector2(-300, 280)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_pbj4j")
+nodes/TimeScale/position = Vector2(-260, 20)
+nodes/Transition/node = SubResource("AnimationNodeTransition_pp5rf")
+nodes/Transition/position = Vector2(-60, 100)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"TimeScale", &"Transition", 1, &"Animation 2", &"Transition", 2, &"Animation 3", &"TimeScale", 0, &"Animation"]
+
+[node name="Net" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 2
+continuous_cd = true
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_ffu6l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0670416)
+shape = SubResource("SphereShape3D_y8o0h")
+
+[node name="net" parent="." instance=ExtResource("2_ow0r3")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="net/Armature" index="0"]
+bones/1/position = Vector3(1.43481, -0.228157, -1.05422)
+bones/2/position = Vector3(-0.466997, 0.0293552, -1.69623)
+bones/3/position = Vector3(-1.74696, -0.140152, -0.574349)
+bones/4/position = Vector3(-1.22455, 0.0978416, 1.03089)
+bones/5/position = Vector3(0.42273, 0.213807, 1.68871)
+bones/6/position = Vector3(1.42471, 0.0237729, 0.398443)
+bones/7/position = Vector3(0.0124308, -1.7576, -0.0438689)
+bones/7/rotation = Quaternion(0.0131266, 0.0770899, 0.000927037, 0.996937)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="net"]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_5ksfx")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_dsiw0")
+anim_player = NodePath("../net/AnimationPlayer")
+active = true
+parameters/TimeScale/scale = 0.21
+parameters/Transition/current_state = "state_1"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="net"]

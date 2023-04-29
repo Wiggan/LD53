@@ -15,6 +15,14 @@ run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
+[editor]
+
+movie_writer/movie_file="C:/tmp/ljd53.avi"
+
 [importer_defaults]
 
 scene={
@@ -42,6 +50,14 @@ scene={
 "nodes/root_scale": 1.0,
 "nodes/root_type": "Node3D",
 "skins/use_named_skins": true
+}
+
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(121, 12),"global_position":Vector2(125, 55),"factor":1.0,"button_index":1,"pressed":true,"double_click":false,"script":null)
+]
 }
 
 [layer_names]

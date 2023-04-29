@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhncy13552n1u"]
+[gd_scene load_steps=14 format=3 uid="uid://bhncy13552n1u"]
 
 [ext_resource type="ArrayMesh" uid="uid://fkymxtt6t0e7" path="res://drones/model_Cube004.res" id="1_k4ba4"]
 [ext_resource type="ArrayMesh" uid="uid://bnvm4ll2u1nqn" path="res://drones/model_Cube005.res" id="2_j78r8"]
 [ext_resource type="ArrayMesh" uid="uid://buci72fwaetol" path="res://packages/model_Cube001.res" id="3_aoh68"]
 [ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="4_uhxgm"]
 [ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="5_1gpwx"]
+[ext_resource type="ArrayMesh" uid="uid://pjyul0e2ouqf" path="res://packages/model_Cube006.res" id="6_ptwcs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_phjin"]
 radius = 1.88892
@@ -44,6 +45,57 @@ tracks/0/keys = {
 _data = {
 "Blink": SubResource("Animation_c34f5"),
 "RESET": SubResource("Animation_j3h1y")
+}
+
+[sub_resource type="Animation" id="Animation_xbnrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneBody:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blade2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blade3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.698132, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.0472, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6tuuf"]
@@ -122,57 +174,6 @@ tracks/5/keys = {
 "values": [Vector3(0, 0.349066, 0), Vector3(0, 6.63225, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xbnrh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DroneBody:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Blade2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.349066, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Blade3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.698132, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blade4:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.0472, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iva2b"]
 _data = {
 "RESET": SubResource("Animation_xbnrh"),
@@ -181,7 +182,11 @@ _data = {
 
 [node name="Drone1" type="RigidBody3D"]
 collision_layer = 2
+mass = 10.0
+inertia = Vector3(0.42, 0.25, 0.33)
+gravity_scale = 4.46
 freeze = true
+linear_damp = 0.009
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_phjin")
@@ -210,7 +215,7 @@ transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 
 mesh = ExtResource("2_j78r8")
 
 [node name="Blade4" type="MeshInstance3D" parent="Drone"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1.866, 0.751, 1.877)
+transform = Transform3D(0.499998, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.499998, 1.866, 0.751, 1.877)
 mesh = ExtResource("2_j78r8")
 
 [node name="Blade5" type="MeshInstance3D" parent="Drone"]
@@ -230,16 +235,24 @@ libraries = {
 "": SubResource("AnimationLibrary_iva2b")
 }
 
-[node name="Package1" type="MeshInstance3D" parent="."]
+[node name="Package1" type="MeshInstance3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09258, 0)
 visible = false
 mesh = ExtResource("3_aoh68")
+skeleton = NodePath("../..")
 
-[node name="Package2" type="MeshInstance3D" parent="."]
+[node name="Package2" type="MeshInstance3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314488, -1.25105, -0.0217217)
 mesh = ExtResource("4_uhxgm")
+skeleton = NodePath("../..")
 
-[node name="Package3" type="MeshInstance3D" parent="."]
+[node name="Package3" type="MeshInstance3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049498, -1.42889, 0.0203971)
 visible = false
 mesh = ExtResource("5_1gpwx")
+skeleton = NodePath("../..")
+
+[node name="ModelCube006" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
+mesh = ExtResource("6_ptwcs")
+skeleton = NodePath("../..")

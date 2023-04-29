@@ -1,26 +1,30 @@
 extends Path3D
 
+var drone1 = preload("res://drones/drone1.tscn")
+var drone2 = preload("res://drones/drone2.tscn")
+
 @export_flags("Drone1", "Drone2") var drone_types = 1
-@export_range(0.5, 10) var speed = 1
+@export_range(0.1, 10) var speed: float = 1
+
+var available_drones = []
+var drone: RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PathFollow3D/AnimationPlayer.speed_scale = speed
-	enable_drone()
-
-func enable_drone():
-	var available_drones = []
 	if drone_types & 1:
-		available_drones.append($PathFollow3D/Drone1)
+		available_drones.append(drone1)
 	if drone_types & 2:
-		available_drones.append($PathFollow3D/Drone2)
+		available_drones.append(drone2)
+
+func create_drone():
+	var selected_drone = available_drones.pick_random()
+	drone = selected_drone.instantiate()
+	$PathFollow3D.add_child(drone)
+
+func drone_reached_destination():
+	drone.queue_free()
+	if not drone.top_level:
+		print("Drone reached its target")
 	
-	available_drones.pick_random().visible = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_animation_player_animation_finished(anim_name):
-	enable_drone()

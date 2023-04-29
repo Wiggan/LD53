@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx06seaggfns7"]
+
+[ext_resource type="PackedScene" uid="uid://dge86yo5q2lcg" path="res://player/model.glb" id="1_cv616"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_u5us0"]
+
+[node name="Player" type="Node3D"]
+transform = Transform3D(1, 0, 0, 9.31323e-10, 1, 2.98023e-08, -9.31323e-10, 2.98023e-08, 1, 0, 0, 0)
+script = ExtResource("1_u5us0")
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 9.31323e-10, 1, 2.98023e-08, -9.31323e-10, 2.98023e-08, 1, 0, 0, 0)
+
+[node name="model" parent="pivot/Camera3D" instance=ExtResource("1_cv616")]
+transform = Transform3D(-1, 8.47516e-08, -2.14454e-08, 1.1827e-16, -0.245307, -0.969445, -8.74228e-08, -0.969446, 0.245307, -0.007, -0.386, -0.297)

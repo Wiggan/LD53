@@ -8,3 +8,23 @@ assets:
 	factory building
 	trees
 	
+sfx:
+	menu click
+	Shoot net
+	drone flying
+	drone crashing
+	drone getting past?
+	upgrade installed
+	
+music:
+	menu music
+	game music
+	
+features:
+	score
+	intro - Somniac LTD is pushing drugs on mankind, stop their deliveries and make people wake up again.
+	upgrades - reload time, net impulse, net size?
+	how to play - explain boxes (small delivery, big delivery, upgrades)
+	aim
+	cursor
+	
