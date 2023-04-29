@@ -9,3 +9,4 @@ var volume = 1.0
 var net_impulse
 var net_cooldown
 var net_scale
+var score

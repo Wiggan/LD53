@@ -1,8 +1,99 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx06seaggfns7"]
+[gd_scene load_steps=14 format=3 uid="uid://bx06seaggfns7"]
 
 [ext_resource type="PackedScene" uid="uid://dge86yo5q2lcg" path="res://player/model.glb" id="1_cv616"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_u5us0"]
 [ext_resource type="Texture2D" uid="uid://dpv45pvwtmeae" path="res://player/crosshair.png" id="3_i1pd6"]
+[ext_resource type="Script" path="res://player/HUD.gd" id="4_060t8"]
+[ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="4_ix1b3"]
+[ext_resource type="Script" path="res://ui/pulse.gd" id="5_fqd27"]
+
+[sub_resource type="Animation" id="Animation_b87sb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pg4xf"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn8jk"]
+_data = {
+"RESET": SubResource("Animation_b87sb"),
+"start": SubResource("Animation_pg4xf")
+}
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_j5t6k"]
+script = ExtResource("5_fqd27")
+
+[sub_resource type="Animation" id="Animation_jruoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_642ga"]
+resource_name = "show"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 2),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1r6sl"]
+_data = {
+"RESET": SubResource("Animation_jruoq"),
+"show": SubResource("Animation_642ga")
+}
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(1, 0, 0, 9.31323e-10, 1, 2.98023e-08, -9.31323e-10, 2.98023e-08, 1, 0, 0, 0)
@@ -32,3 +123,106 @@ texture = ExtResource("3_i1pd6")
 
 [node name="NetCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HUD" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ix1b3")
+script = ExtResource("4_060t8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -127.0
+offset_right = 293.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_constants/separation = 9
+alignment = 2
+
+[node name="NetSize" type="RichTextLabel" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "Net Size: "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="NetImpulse" type="RichTextLabel" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "Net Size: "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="NetCooldown" type="RichTextLabel" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "Net Size: "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Score" type="RichTextLabel" parent="HUD"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+offset_left = 12.0
+offset_top = 22.0
+offset_right = 293.0
+offset_bottom = 60.0
+bbcode_enabled = true
+text = "Score: "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_tn8jk")
+}
+
+[node name="LootBoxNotification" type="Control" parent="HUD"]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/LootBoxNotification"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_j5t6k")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/LootBoxNotification"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_1r6sl")
+}

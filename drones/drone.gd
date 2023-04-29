@@ -8,7 +8,7 @@ extends RigidBody3D
 ]
 
 # Called when the node enters the scene tree for the first time.
-func _ready():	
+func _ready():
 	if randf() < chance_to_drop_loot:
 		$Drone/LootBox.visible = true
 	else:
@@ -34,14 +34,17 @@ func _on_body_entered(body):
 		if $Drone/LootBox.visible:
 			if randf() < COOLDOWN_PROBABILITY:
 				Globals.net_cooldown *= 0.8
-				$LootBoxNotification/RichTextLabel.text = "[center]Net Launcher Cooldown Reduced![/center]"
 			elif randf() < IMPULSE_PROBABILITY:
 				Globals.net_impulse *= 1.2
-				$LootBoxNotification/RichTextLabel.text = "[center]Net Launcher Power Increased![/center]"
 			else:
 				Globals.net_scale *= 1.2
-				$LootBoxNotification/RichTextLabel.text = "[center]Net Size Increased![/center]"
-			$LootBoxNotification/AnimationPlayer.play("show")
+		elif $Drone/Package1.visible:
+			Globals.score += 20
+		elif $Drone/Package2.visible:
+			Globals.score += 20
+		elif $Drone/Package3.visible:
+			Globals.score += 50
+		
 		$CPUParticles3D.emitting = true
 		$CPUParticles3D.top_level = true
 		$Decal.global_position = global_position

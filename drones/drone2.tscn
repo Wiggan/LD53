@@ -19,7 +19,7 @@ transform = Transform3D(1.38041, 0, 0.502428, 0, 1.469, 0, -0.502428, 0, 1.38041
 transform = Transform3D(1.12532, 0, 0.944256, 0, 1.469, 0, -0.944256, 0, 1.12532, -2.93609, 0.24093, 1.66071)
 
 [node name="Blade4" parent="Drone" index="4"]
-transform = Transform3D(0.734496, 0, 1.27219, 0, 1.469, 0, -1.27219, 0, 0.734496, 2.98162, 0.24093, -1.76585)
+transform = Transform3D(0.734495, 0, 1.27219, 0, 1.469, 0, -1.27219, 0, 0.734495, 2.98162, 0.24093, -1.76585)
 
 [node name="Blade5" parent="Drone" index="5"]
 transform = Transform3D(-1.20524, 0, 0.839862, 0, 1.469, 0, -0.839862, 0, -1.20524, 0.0237266, 0.24093, 3.37967)
@@ -30,5 +30,7 @@ transform = Transform3D(-0.845301, 0, 1.20143, 0, 1.469, 0, -1.20143, 0, -0.8453
 visible = true
 
 [node name="RichTextLabel" parent="LootBoxNotification" index="0"]
-offset_right = 1152.0
-offset_bottom = 143.0
+offset_left = 326.0
+offset_top = 224.0
+offset_right = 1478.0
+offset_bottom = 367.0

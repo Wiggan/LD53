@@ -1,0 +1,78 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://hur5ivph54t0"]
+
+[ext_resource type="FontFile" uid="uid://dd18rmxa53ucq" path="res://ui/Tourney/static/Tourney-Medium.ttf" id="1_avinw"]
+[ext_resource type="StyleBox" uid="uid://d2qp5y046oic8" path="res://ui/button_bg.tres" id="2_uggth"]
+[ext_resource type="Texture2D" uid="uid://b1swqb4i0nige" path="res://ui/package.png" id="3_fpgx5"]
+[ext_resource type="StyleBox" uid="uid://c5qukjqut08xm" path="res://ui/slider.tres" id="4_ml1lw"]
+
+[sub_resource type="Gradient" id="Gradient_pxr6a"]
+offsets = PackedFloat32Array(0, 0.35, 0.65, 1)
+colors = PackedColorArray(0.227451, 0.219608, 0.345098, 0, 0.227451, 0.219608, 0.345098, 1, 0.227451, 0.219608, 0.345098, 1, 0.227451, 0.219608, 0.345098, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8s8vj"]
+gradient = SubResource("Gradient_pxr6a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l317g"]
+resource_local_to_scene = true
+texture = SubResource("GradientTexture1D_8s8vj")
+
+[sub_resource type="Image" id="Image_ymi8k"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ccbk8"]
+image = SubResource("Image_ymi8k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vewo"]
+bg_color = Color(0.294118, 0.501961, 0.792157, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_synjd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.227451, 0.219608, 0.345098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+expand_margin_left = 2.0
+expand_margin_top = 10.0
+expand_margin_right = 2.0
+expand_margin_bottom = 10.0
+
+[resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_avinw")
+Button/styles/disabled = ExtResource("2_uggth")
+Button/styles/focus = ExtResource("2_uggth")
+Button/styles/hover = ExtResource("2_uggth")
+Button/styles/normal = SubResource("StyleBoxTexture_l317g")
+Button/styles/pressed = ExtResource("2_uggth")
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("3_fpgx5")
+HSlider/icons/grabber_disabled = ExtResource("3_fpgx5")
+HSlider/icons/grabber_highlight = ExtResource("3_fpgx5")
+HSlider/icons/tick = SubResource("ImageTexture_ccbk8")
+HSlider/styles/grabber_area = ExtResource("4_ml1lw")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_8vewo")
+HSlider/styles/slider = SubResource("StyleBoxFlat_synjd")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.792157)
+Label/constants/outline_size = 0
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_avinw")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.784314)
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/fonts/normal_font = ExtResource("1_avinw")

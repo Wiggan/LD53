@@ -7,6 +7,7 @@ func _ready():
 	Globals.net_impulse = 40
 	Globals.net_cooldown = 0.8
 	Globals.net_scale = 1
+	Globals.score = 0
 
 
 func _input(event):

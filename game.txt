@@ -1,5 +1,7 @@
 palette: https://lospec.com/palette-list/cc-29
-
+fonts:
+	https://fonts.google.com/specimen/Tourney?preview.text=Ensomniac&preview.text_type=custom
+	
 assets:
 	2 drones x
 	3 packages x
@@ -22,7 +24,7 @@ music:
 	
 features:
 	score
-	intro - Somniac LTD is pushing drugs on mankind, stop their deliveries and make people wake up again.
+	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
 	how to play - explain boxes (small delivery, big delivery, upgrades) 
 	aim - maybe with distance marks for gravity compensation? x
 	cursor
