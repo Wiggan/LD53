@@ -1,0 +1,245 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhncy13552n1u"]
+
+[ext_resource type="ArrayMesh" uid="uid://fkymxtt6t0e7" path="res://drones/model_Cube004.res" id="1_k4ba4"]
+[ext_resource type="ArrayMesh" uid="uid://bnvm4ll2u1nqn" path="res://drones/model_Cube005.res" id="2_j78r8"]
+[ext_resource type="ArrayMesh" uid="uid://buci72fwaetol" path="res://packages/model_Cube001.res" id="3_aoh68"]
+[ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="4_uhxgm"]
+[ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="5_1gpwx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_phjin"]
+radius = 1.88892
+
+[sub_resource type="Animation" id="Animation_c34f5"]
+resource_name = "Blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:surface_0/material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.241484, 1),
+"update": 0,
+"values": [10.1, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_j3h1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:surface_0/material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3r8n8"]
+_data = {
+"Blink": SubResource("Animation_c34f5"),
+"RESET": SubResource("Animation_j3h1y")
+}
+
+[sub_resource type="Animation" id="Animation_6tuuf"]
+resource_name = "spinning"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blade1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blade2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0), Vector3(0, 6.63225, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blade3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.698132, 0), Vector3(0, 6.98132, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.0472, 0), Vector3(0, 7.33038, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blade6:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blade5:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0), Vector3(0, 6.63225, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xbnrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneBody:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blade2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blade3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.698132, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.0472, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iva2b"]
+_data = {
+"RESET": SubResource("Animation_xbnrh"),
+"spinning": SubResource("Animation_6tuuf")
+}
+
+[node name="Drone1" type="RigidBody3D"]
+collision_layer = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_phjin")
+
+[node name="Drone" type="Node3D" parent="."]
+
+[node name="DroneBody" type="MeshInstance3D" parent="Drone"]
+mesh = ExtResource("1_k4ba4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drone/DroneBody"]
+autoplay = "Blink"
+libraries = {
+"": SubResource("AnimationLibrary_3r8n8")
+}
+
+[node name="Blade1" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(-0.0386833, 0, 0.999252, 0, 1, 0, -0.999252, 0, -0.0386833, -1.86597, 0.750614, -1.87682)
+mesh = ExtResource("2_j78r8")
+
+[node name="Blade2" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 1.866, 0.751, -1.877)
+mesh = ExtResource("2_j78r8")
+
+[node name="Blade3" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -1.866, 0.751, 1.877)
+mesh = ExtResource("2_j78r8")
+
+[node name="Blade4" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1.866, 0.751, 1.877)
+mesh = ExtResource("2_j78r8")
+
+[node name="Blade5" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(-0.378115, 0, 0.925759, 0, 1, 0, -0.925759, 0, -0.378115, -1.866, 0.751, 1.877)
+visible = false
+mesh = ExtResource("2_j78r8")
+
+[node name="Blade6" type="MeshInstance3D" parent="Drone"]
+transform = Transform3D(-0.0386833, 0, 0.999252, 0, 1, 0, -0.999252, 0, -0.0386833, 1.866, 0.751, 1.877)
+visible = false
+mesh = ExtResource("2_j78r8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drone"]
+autoplay = "spinning"
+speed_scale = 4.52
+libraries = {
+"": SubResource("AnimationLibrary_iva2b")
+}
+
+[node name="Package1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09258, 0)
+visible = false
+mesh = ExtResource("3_aoh68")
+
+[node name="Package2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314488, -1.25105, -0.0217217)
+mesh = ExtResource("4_uhxgm")
+
+[node name="Package3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049498, -1.42889, 0.0203971)
+visible = false
+mesh = ExtResource("5_1gpwx")

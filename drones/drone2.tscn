@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://btls3tbrmejsa"]
+
+[ext_resource type="PackedScene" uid="uid://bhncy13552n1u" path="res://drones/drone1.tscn" id="1_w10x2"]
+[ext_resource type="ArrayMesh" uid="uid://cget116fgw6nw" path="res://drones/model_Cylinder001.res" id="2_4jpgj"]
+
+[node name="Drone2" instance=ExtResource("1_w10x2")]
+
+[node name="DroneBody" parent="Drone" index="0"]
+mesh = ExtResource("2_4jpgj")
+
+[node name="Blade1" parent="Drone" index="1"]
+transform = Transform3D(-1.46617, 0, -0.091065, 0, 1.469, 0, 0.091065, 0, -1.46617, -2.94744, 0.240544, -1.70606)
+
+[node name="Blade2" parent="Drone" index="2"]
+transform = Transform3D(1.38041, 0, 0.502428, 0, 1.469, 0, -0.502428, 0, 1.38041, -0.0123426, 0.24093, -3.39106)
+
+[node name="Blade3" parent="Drone" index="3"]
+transform = Transform3D(1.12532, 0, 0.944255, 0, 1.469, 0, -0.944255, 0, 1.12532, -2.93609, 0.24093, 1.66071)
+
+[node name="Blade4" parent="Drone" index="4"]
+transform = Transform3D(0.7345, 0, 1.27219, 0, 1.469, 0, -1.27219, 0, 0.7345, 2.98162, 0.24093, -1.76585)
+
+[node name="Blade5" parent="Drone" index="5"]
+transform = Transform3D(-1.20524, 0, 0.839862, 0, 1.469, 0, -0.839862, 0, -1.20524, 0.0237266, 0.24093, 3.37967)
+visible = true
+
+[node name="Blade6" parent="Drone" index="6"]
+transform = Transform3D(-0.845301, 0, 1.20143, 0, 1.469, 0, -1.20143, 0, -0.845301, 2.94747, 0.24093, 1.71763)
+visible = true

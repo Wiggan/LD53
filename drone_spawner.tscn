@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk3vqf0pdd8ak"]
+
+[ext_resource type="Script" path="res://spawner.gd" id="1_xx5wx"]
+[ext_resource type="PackedScene" uid="uid://bhncy13552n1u" path="res://drones/drone1.tscn" id="2_hvyux"]
+[ext_resource type="PackedScene" uid="uid://btls3tbrmejsa" path="res://drones/drone2.tscn" id="3_krq0n"]
+
+[sub_resource type="Curve3D" id="Curve3D_nwyq2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, 1.33161, 12.0431, -18.556, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, 4.05667, 11.2123, -39.0185, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, 9.99469, -5.67656, -53.9594, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 23.9904, -0.885618, -80.542, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_ppkce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wepk4"]
+resource_name = "fly"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o88kx"]
+_data = {
+"RESET": SubResource("Animation_ppkce"),
+"fly": SubResource("Animation_wepk4")
+}
+
+[node name="Path3D" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.763, 19.6555, 81.4202)
+curve = SubResource("Curve3D_nwyq2")
+script = ExtResource("1_xx5wx")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.99609, 0.0437185, -0.076725, 7.45055e-09, 0.868847, 0.495077, 0.0883063, 0.493142, -0.865454, 3.28033, -0.531244, 3.42546)
+
+[node name="Drone1" parent="PathFollow3D" instance=ExtResource("2_hvyux")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D"]
+autoplay = "fly"
+libraries = {
+"": SubResource("AnimationLibrary_o88kx")
+}
+
+[node name="Drone2" parent="PathFollow3D" instance=ExtResource("3_krq0n")]
+visible = false
+
+[connection signal="animation_finished" from="PathFollow3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

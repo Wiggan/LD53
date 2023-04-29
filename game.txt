@@ -1,0 +1,10 @@
+palette: https://lospec.com/palette-list/cc-29
+
+assets:
+	2 drones
+	3 packages
+	net gun
+	net (4 balls with wireframe plane, animated?)
+	factory building
+	trees
+	
