@@ -19,7 +19,8 @@ animation = &"launch"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pbj4j"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_pp5rf"]
-xfade_time = 0.2
+sync = true
+xfade_time = 0.44
 input_0/name = "state_0"
 input_0/auto_advance = true
 input_0/reset = true
@@ -31,8 +32,9 @@ input_2/auto_advance = false
 input_2/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsiw0"]
+graph_offset = Vector2(-795.909, -127.455)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_u2iax")
-nodes/Animation/position = Vector2(-460, 60)
+nodes/Animation/position = Vector2(-460, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_wvatr")
 "nodes/Animation 2/position" = Vector2(-320, 160)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_scgkx")
@@ -117,7 +119,7 @@ bones/2/position = Vector3(-0.472443, 0.00702975, -1.70448)
 bones/3/position = Vector3(-1.73789, -0.145014, -0.576791)
 bones/4/position = Vector3(-1.22648, 0.11488, 1.01385)
 bones/5/position = Vector3(0.393678, 0.230766, 1.68241)
-bones/6/position = Vector3(1.437, 0.0076784, 0.415818)
+bones/6/position = Vector3(1.437, 0.00767841, 0.415818)
 bones/7/position = Vector3(0.0119486, -1.76729, -0.043337)
 bones/7/rotation = Quaternion(0.0128669, 0.0863149, 0.000914473, 0.996184)
 
@@ -125,7 +127,7 @@ bones/7/rotation = Quaternion(0.0128669, 0.0863149, 0.000914473, 0.996184)
 tree_root = SubResource("AnimationNodeBlendTree_dsiw0")
 anim_player = NodePath("../net/AnimationPlayer")
 active = true
-parameters/TimeScale/scale = 0.21
+parameters/TimeScale/scale = 0.27
 parameters/Transition/current_state = "state_1"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 1

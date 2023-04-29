@@ -13,8 +13,8 @@ assets:
 sfx:
 	menu click
 	Shoot net x
-	drone flying
-	drone crashing
+	drone flying x
+	drone crashing x
 	drone getting past?
 	upgrade installed
 	time running out
@@ -32,3 +32,4 @@ features:
 	UI x
 	Some recoil
 	add a car that the gun is mounted on?
+	

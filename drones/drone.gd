@@ -60,7 +60,7 @@ func _on_body_entered(body):
 		$AudioStreamPlayer3D/AnimationPlayer.stop()
 		$CPUParticles3D.emitting = true
 		$CPUParticles3D.top_level = true
-		if $Decal:
+		if has_node("Decal"):
 			$Decal.global_position = global_position
 			$Decal.global_rotation_degrees = Vector3(0, randf()*360, 0)
 			$Decal.visible = true
