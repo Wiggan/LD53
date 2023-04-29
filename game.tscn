@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://i10w3k2towh3"]
+[gd_scene load_steps=15 format=3 uid="uid://i10w3k2towh3"]
 
 [ext_resource type="PackedScene" uid="uid://dxxuqbiqx3g1b" path="res://environment/model.glb" id="1_dvyf4"]
 [ext_resource type="PackedScene" uid="uid://bk3vqf0pdd8ak" path="res://drone_spawner.tscn" id="2_l5hct"]
 [ext_resource type="PackedScene" uid="uid://bx06seaggfns7" path="res://player/player.tscn" id="3_ahol5"]
-[ext_resource type="Script" path="res://menu.gd" id="4_876i0"]
-[ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="4_cprgc"]
+[ext_resource type="PackedScene" uid="uid://cgkpdn4s7a0bm" path="res://menu.tscn" id="4_iljoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2i1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,7 +20,7 @@ sdfgi_enabled = true
 glow_enabled = true
 glow_blend_mode = 0
 
-[sub_resource type="Curve3D" id="Curve3D_bn001"]
+[sub_resource type="Curve3D" id="Curve3D_2w3j3"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, 0.879044, 18.5269, -17.1825, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, 4.05667, 11.2123, -39.0185, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, 9.99469, -5.67656, -53.9594, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 23.9904, -0.885618, -80.542, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -29,7 +28,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_08ckq"]
+[sub_resource type="Curve3D" id="Curve3D_7bv75"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, 0.879044, 18.5269, -17.1825, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, 4.05667, 11.2123, -39.0185, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, 9.99469, -5.67656, -53.9594, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 23.9904, -0.885618, -80.542, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -37,7 +36,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_v5eev"]
+[sub_resource type="Curve3D" id="Curve3D_627e6"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, -0.290054, 13.3422, -18.0114, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, -6.45059, 11.1428, -38.6324, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, -2.82488, 1.60464, -59.6845, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 25.6703, 15.2802, -78.1624, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -45,7 +44,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_61gsw"]
+[sub_resource type="Curve3D" id="Curve3D_qk805"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, -0.290054, 13.3422, -18.0114, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, -6.45059, 11.1428, -38.6324, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, -2.82488, 1.60464, -59.6845, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 25.6703, 15.2802, -78.1624, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -53,7 +52,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_pn511"]
+[sub_resource type="Curve3D" id="Curve3D_f5skd"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, -0.290054, 13.3422, -18.0114, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, -6.45059, 11.1428, -38.6324, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, -2.82488, 1.60464, -59.6845, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 25.6703, 15.2802, -78.1624, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -61,7 +60,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_bw3ia"]
+[sub_resource type="Curve3D" id="Curve3D_ph405"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, -0.290054, 13.3422, -18.0114, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, -6.45059, 11.1428, -38.6324, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, -2.82488, 1.60464, -59.6845, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 25.6703, 15.2802, -78.1624, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
@@ -69,50 +68,13 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_ioebf"]
+[sub_resource type="Curve3D" id="Curve3D_i0h7i"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.28033, -0.531244, 3.42546, -2.95647, -1.0656, 5.27357, 2.95647, 1.0656, -5.27357, -0.290054, 13.3422, -18.0114, 0.896404, 1.28786, 5.22021, -0.896404, -1.28786, -5.22021, -6.45059, 11.1428, -38.6324, 1.94555, 2.33497, 8.32296, -1.94555, -2.33497, -8.32296, -2.82488, 1.60464, -59.6845, 0.0744209, -0.128374, 5.86322, -0.0744209, 0.128374, -5.86322, 25.6703, 15.2802, -78.1624, 5.43149, 1.33156, -1.46392, -5.43149, -1.33156, 1.46392, 5.80792, -5.09505, -90.9705, 1.82244, 2.41542, 1.99246, 0, 0, 0, -18.3855, 3.74589, -104.82, 0, 0, 0, 0, 0, 0, -24.3842, 0.157415, -193.26),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
-
-[sub_resource type="Animation" id="Animation_6tgr0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_6bwak"]
-resource_name = "to_game"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t75vd"]
-_data = {
-"RESET": SubResource("Animation_6tgr0"),
-"to_game": SubResource("Animation_6bwak")
-}
 
 [node name="Node3D" type="Node3D"]
 
@@ -128,47 +90,47 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.7351)
 
 [node name="spawner" parent="." instance=ExtResource("2_l5hct")]
-curve = SubResource("Curve3D_bn001")
+curve = SubResource("Curve3D_2w3j3")
 speed = 0.5
 
 [node name="spawner2" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.973255, 0.229727, 0, -0.229727, 0.973255, 0, 0, 0, 1, 15.2286, 19.6555, 81.4202)
-curve = SubResource("Curve3D_08ckq")
+curve = SubResource("Curve3D_7bv75")
 drone_types = 3
 speed = 0.364
 start_time = 2.683
 
 [node name="spawner3" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.935666, 0, -0.352887, 0, 1, 0, 0.352887, 0, 0.935666, -7.43336, 19.6555, 81.4202)
-curve = SubResource("Curve3D_v5eev")
+curve = SubResource("Curve3D_627e6")
 drone_types = 2
 speed = 0.161
 start_time = 5.0
 
 [node name="spawner4" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.865383, -0.380247, -0.32638, 0.355784, 0.924885, -0.134184, 0.352887, 0, 0.935666, 4.25036, 19.6555, 88.6402)
-curve = SubResource("Curve3D_61gsw")
+curve = SubResource("Curve3D_qk805")
 drone_types = 3
 speed = 0.265
 start_time = 10.0
 
 [node name="spawner5" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.924268, -0.32696, 0.197042, 0.355784, 0.924885, -0.134184, -0.138368, 0.194127, 0.971169, 6.39454, 19.6555, 88.6402)
-curve = SubResource("Curve3D_pn511")
+curve = SubResource("Curve3D_f5skd")
 drone_types = 2
 speed = 0.31
 start_time = 15.0
 
 [node name="spawner6" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.92722, -0.0721743, 0.367497, 0.138524, 0.977758, -0.15748, -0.347957, 0.196926, 0.916595, 29.7258, 22.2023, 88.6402)
-curve = SubResource("Curve3D_bw3ia")
+curve = SubResource("Curve3D_ph405")
 drone_types = 3
 speed = 0.378
 start_time = 20.0
 
 [node name="spawner7" parent="." instance=ExtResource("2_l5hct")]
 transform = Transform3D(0.797163, -0.452414, 0.399817, 0.493414, 0.869794, 0.000438571, -0.347957, 0.196926, 0.916595, 10.2394, 22.2023, 88.6402)
-curve = SubResource("Curve3D_ioebf")
+curve = SubResource("Curve3D_i0h7i")
 drone_types = 3
 speed = 0.72
 start_time = 30.0
@@ -176,75 +138,4 @@ start_time = 30.0
 [node name="Player" parent="." instance=ExtResource("3_ahol5")]
 transform = Transform3D(-1, -2.54989e-15, -8.74228e-08, 9.31323e-10, 1, 2.98023e-08, 8.83541e-08, -2.98023e-08, -1, 0, 1.52701, -16.6488)
 
-[node name="Menu" type="VBoxContainer" parent="."]
-process_mode = 3
-custom_minimum_size = Vector2(500, 400)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-theme = ExtResource("4_cprgc")
-theme_override_constants/separation = 23
-script = ExtResource("4_876i0")
-
-[node name="Start" type="Button" parent="Menu"]
-layout_mode = 2
-text = "Start"
-
-[node name="Resume" type="Button" parent="Menu"]
-visible = false
-layout_mode = 2
-text = "Resume"
-
-[node name="GridContainer" type="GridContainer" parent="Menu"]
-layout_mode = 2
-columns = 2
-
-[node name="Label" type="Label" parent="Menu/GridContainer"]
-layout_mode = 2
-text = "Mouse Sensitivity"
-horizontal_alignment = 2
-
-[node name="SensitivitySlider" type="HSlider" parent="Menu/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 0.01
-max_value = 2.0
-step = 0.01
-value = 0.6
-
-[node name="Label2" type="Label" parent="Menu/GridContainer"]
-layout_mode = 2
-text = "Audio Volume"
-horizontal_alignment = 2
-
-[node name="AudioVolumeSlider" type="HSlider" parent="Menu/GridContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="Exit" type="Button" parent="Menu"]
-layout_mode = 2
-text = "Exit"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-libraries = {
-"": SubResource("AnimationLibrary_t75vd")
-}
-
-[connection signal="pressed" from="Menu/Start" to="Menu" method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Resume" to="Menu" method="resume"]
-[connection signal="value_changed" from="Menu/GridContainer/SensitivitySlider" to="Menu" method="_on_sensitivity_slider_value_changed"]
-[connection signal="value_changed" from="Menu/GridContainer/AudioVolumeSlider" to="Menu" method="_on_audio_volume_slider_value_changed"]
-[connection signal="pressed" from="Menu/Exit" to="Menu" method="_on_exit_pressed"]
+[node name="Menu" parent="." instance=ExtResource("4_iljoc")]
