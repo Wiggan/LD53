@@ -4,10 +4,7 @@ var net1 = preload("res://player/net.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.net_impulse = 40
-	Globals.net_cooldown = 0.8
-	Globals.net_scale = 1
-	Globals.score = 0
+	$TimeRunningOutTimer.start($Timer.time_left - 10)
 
 
 func _input(event):
@@ -29,3 +26,12 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+
+func _on_timer_timeout():
+	set_process_input(false)
+	$Timer/AnimationPlayer.play("go_to_score")
+
+var score_screen = preload("res://score_screen.tscn")
+func go_to_score_screen():
+	get_tree().change_scene_to_packed(score_screen)

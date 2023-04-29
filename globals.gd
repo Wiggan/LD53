@@ -10,3 +10,8 @@ var net_impulse
 var net_cooldown
 var net_scale
 var score
+
+var small
+var cardboard
+var big
+var loot_box

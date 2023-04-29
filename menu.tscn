@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgkpdn4s7a0bm"]
+[gd_scene load_steps=7 format=3 uid="uid://cgkpdn4s7a0bm"]
 
 [ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="1_laoeq"]
 [ext_resource type="Script" path="res://menu.gd" id="2_v2y31"]
@@ -58,9 +58,38 @@ tracks/1/keys = {
 "values": [Color(0, 0, 0, 0.87451), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qcj3v"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.87451)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t75vd"]
 _data = {
 "RESET": SubResource("Animation_6tgr0"),
+"fade_in": SubResource("Animation_qcj3v"),
 "to_game": SubResource("Animation_6bwak")
 }
 
@@ -150,6 +179,7 @@ layout_mode = 2
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+autoplay = "fade_in"
 libraries = {
 "": SubResource("AnimationLibrary_t75vd")
 }

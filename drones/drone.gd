@@ -38,12 +38,17 @@ func _on_body_entered(body):
 				Globals.net_impulse *= 1.2
 			else:
 				Globals.net_scale *= 1.2
+			Globals.score += 20
+			Globals.loot_box += 1
 		elif $Drone/Package1.visible:
 			Globals.score += 20
+			Globals.small += 1
 		elif $Drone/Package2.visible:
-			Globals.score += 20
+			Globals.score += 40
+			Globals.cardboard += 1
 		elif $Drone/Package3.visible:
-			Globals.score += 50
+			Globals.score += 60
+			Globals.big += 1
 		
 		$CPUParticles3D.emitting = true
 		$CPUParticles3D.top_level = true

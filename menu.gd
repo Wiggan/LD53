@@ -6,6 +6,8 @@ func _ready():
 	if not Globals.game_started:
 		get_tree().paused = true
 	else:
+		$Start.visible = false
+		$Resume.visible = true
 		resume()
 	$GridContainer/AudioVolumeSlider.value = Globals.volume
 	_on_audio_volume_slider_value_changed(Globals.volume)

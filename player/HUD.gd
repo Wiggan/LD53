@@ -1,16 +1,25 @@
 extends Control
 
+@onready var net_impulse = 40
+@onready var net_cooldown = 0.8
+@onready var net_scale = 1
+@onready var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Globals.net_impulse = net_impulse
+	Globals.net_cooldown = net_cooldown
+	Globals.net_scale = net_scale
+	Globals.score = score
+	Globals.small = 0
+	Globals.cardboard = 0
+	Globals.big = 0
+	Globals.loot_box = 0
+	$Score.text = "[update]Doses intercepted: " + str(Globals.score)
+	$VBoxContainer/NetSize.text = "Net Size: " + str(Globals.net_scale)
+	$VBoxContainer/NetImpulse.text = "Power: " + str(Globals.net_impulse)
+	$VBoxContainer/NetCooldown.text = "Cooldown: " + str(Globals.net_cooldown)
 
-
-# Player stats
-var net_impulse = 0
-var net_cooldown = 0
-var net_scale = 0
-var score = -1
 
 
 var time_text_format = "TIME: %d:%02d"
