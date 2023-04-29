@@ -4,44 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://4hv0q0q7j710" path="res://player/net.glb" id="2_ow0r3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y8o0h"]
+resource_local_to_scene = true
 radius = 1.687
-
-[sub_resource type="Animation" id="Animation_513e0"]
-resource_name = "spin"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0), Vector3(0, -3.14159, 6.28319)]
-}
-
-[sub_resource type="Animation" id="Animation_ue84f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksfx"]
-_data = {
-"RESET": SubResource("Animation_ue84f"),
-"spin": SubResource("Animation_513e0")
-}
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wvatr"]
 animation = &"fly"
@@ -67,7 +31,6 @@ input_2/auto_advance = false
 input_2/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsiw0"]
-graph_offset = Vector2(-668, -39)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_u2iax")
 nodes/Animation/position = Vector2(-460, 60)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_wvatr")
@@ -78,7 +41,7 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_pbj4j")
 nodes/TimeScale/position = Vector2(-260, 20)
 nodes/Transition/node = SubResource("AnimationNodeTransition_pp5rf")
 nodes/Transition/position = Vector2(-60, 100)
-node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"TimeScale", &"Transition", 1, &"Animation 2", &"Transition", 2, &"Animation 3", &"TimeScale", 0, &"Animation"]
+node_connections = [&"output", 0, &"Transition", &"TimeScale", 0, &"Animation", &"Transition", 0, &"TimeScale", &"Transition", 1, &"Animation 2", &"Transition", 2, &"Animation 3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_to3fn"]
 transparency = 1
@@ -96,6 +59,43 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.500734, 1)
 colors = PackedColorArray(0.560955, 0.560955, 0.560955, 0, 0.552956, 0.552956, 0.552956, 1, 0.286275, 0.286275, 0.286275, 0)
 
+[sub_resource type="Animation" id="Animation_ue84f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_513e0"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -3.14159, 6.28319)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksfx"]
+_data = {
+"RESET": SubResource("Animation_ue84f"),
+"spin": SubResource("Animation_513e0")
+}
+
 [node name="Net" type="RigidBody3D"]
 collision_layer = 0
 collision_mask = 2
@@ -109,23 +109,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0670416)
 shape = SubResource("SphereShape3D_y8o0h")
 
 [node name="net" parent="." instance=ExtResource("2_ow0r3")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="net/Armature" index="0"]
-bones/1/position = Vector3(1.64699, -0.436729, -1.12456)
-bones/2/position = Vector3(-0.381526, 0.379753, -1.56671)
-bones/3/position = Vector3(-1.88934, -0.0638434, -0.53602)
-bones/4/position = Vector3(-1.19433, -0.16958, 1.29834)
-bones/5/position = Vector3(0.8787, -0.0523701, 1.78772)
-bones/6/position = Vector3(1.23182, 0.276376, 0.125741)
-bones/7/position = Vector3(0.0199984, -1.60555, -0.0522169)
-bones/7/rotation = Quaternion(0.0170546, -0.0685955, 0.0011138, 0.997498)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="net"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_5ksfx")
-}
+bones/1/position = Vector3(1.63724, -0.427142, -1.12133)
+bones/2/position = Vector3(-0.385454, 0.363648, -1.57266)
+bones/3/position = Vector3(-1.8828, -0.0673507, -0.537782)
+bones/4/position = Vector3(-1.19572, -0.157289, 1.28605)
+bones/5/position = Vector3(0.857743, -0.040136, 1.78317)
+bones/6/position = Vector3(1.24068, 0.264765, 0.138275)
+bones/7/position = Vector3(0.0196505, -1.61254, -0.0518332)
+bones/7/rotation = Quaternion(0.0168819, -0.0619258, 0.00110573, 0.997937)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_dsiw0")
@@ -166,6 +160,13 @@ color_ramp = SubResource("Gradient_0oyxv")
 wait_time = 0.508
 one_shot = true
 autostart = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../net")
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_5ksfx")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

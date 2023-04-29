@@ -34,6 +34,7 @@ func _on_body_entered(body):
 func set_net_scale(net_scale):
 	$CollisionShape3D.shape["radius"] *= net_scale
 	$net.scale *= net_scale
+	print($CollisionShape3D.shape["radius"])
 
 func _on_free_timer_timeout():
 	queue_free()
