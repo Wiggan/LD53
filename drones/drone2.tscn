@@ -28,9 +28,3 @@ visible = true
 [node name="Blade6" parent="Drone" index="6"]
 transform = Transform3D(-0.845301, 0, 1.20143, 0, 1.469, 0, -1.20143, 0, -0.845301, 2.94747, 0.24093, 1.71763)
 visible = true
-
-[node name="RichTextLabel" parent="LootBoxNotification" index="0"]
-offset_left = 326.0
-offset_top = 224.0
-offset_right = 1478.0
-offset_bottom = 367.0

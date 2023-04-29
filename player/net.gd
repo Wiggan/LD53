@@ -14,7 +14,7 @@ func _process(_delta):
 func tween_to_parent():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector3.ZERO, 0.2)
-	tween.tween_property(self, "scale", Vector3.ONE*1.6, 0.2)
+	tween.tween_property($net, "scale", Vector3.ONE*1.6, 0.2)
 
 func _on_body_entered(body):
 	

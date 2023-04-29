@@ -17,6 +17,7 @@ sfx:
 	drone crashing
 	drone getting past?
 	upgrade installed
+	time running out
 	
 music:
 	menu music
@@ -27,5 +28,5 @@ features:
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
 	how to play - explain boxes (small delivery, big delivery, upgrades) 
 	aim - maybe with distance marks for gravity compensation? x
-	cursor
-	UI
+	cursor x
+	UI x

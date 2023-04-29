@@ -112,14 +112,14 @@ shape = SubResource("SphereShape3D_y8o0h")
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="net/Armature" index="0"]
-bones/1/position = Vector3(1.60737, -0.397784, -1.11143)
-bones/2/position = Vector3(-0.397485, 0.314326, -1.59089)
-bones/3/position = Vector3(-1.86276, -0.0780919, -0.543177)
-bones/4/position = Vector3(-1.19998, -0.119647, 1.2484)
-bones/5/position = Vector3(0.793561, -0.00266911, 1.76924)
-bones/6/position = Vector3(1.26783, 0.229209, 0.17666)
-bones/7/position = Vector3(0.0185853, -1.63394, -0.0506582)
-bones/7/rotation = Quaternion(0.0163475, -0.0414599, 0.00108067, 0.999006)
+bones/1/position = Vector3(1.42129, -0.214868, -1.04974)
+bones/2/position = Vector3(-0.472443, 0.00702975, -1.70448)
+bones/3/position = Vector3(-1.73789, -0.145014, -0.576791)
+bones/4/position = Vector3(-1.22648, 0.11488, 1.01385)
+bones/5/position = Vector3(0.393678, 0.230766, 1.68241)
+bones/6/position = Vector3(1.437, 0.0076784, 0.415818)
+bones/7/position = Vector3(0.0119486, -1.76729, -0.043337)
+bones/7/rotation = Quaternion(0.0128669, 0.0863149, 0.000914473, 0.996184)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_dsiw0")
