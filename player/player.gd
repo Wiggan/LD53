@@ -15,6 +15,7 @@ func _input(event):
 		$pivot.rotation.x = clamp($pivot.rotation.x - look_dir.y * Globals.mouse_sensitivity, -1.5, 1.5)
 
 	if event.is_action_pressed("shoot") and $NetCooldownTimer.time_left == 0:
+		$pivot/Camera3D/model/AudioStreamPlayer3D.play()
 		var net: RigidBody3D = net1.instantiate()
 		net.apply_central_impulse($pivot.global_transform.basis.z * -Globals.net_impulse)
 		net.set_net_scale(Globals.net_scale)

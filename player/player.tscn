@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bx06seaggfns7"]
+[gd_scene load_steps=23 format=3 uid="uid://bx06seaggfns7"]
 
 [ext_resource type="PackedScene" uid="uid://dge86yo5q2lcg" path="res://player/model.glb" id="1_cv616"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_u5us0"]
 [ext_resource type="Texture2D" uid="uid://dpv45pvwtmeae" path="res://player/crosshair.png" id="3_i1pd6"]
+[ext_resource type="AudioStream" uid="uid://c6eynypp3ool4" path="res://player/shoot_randomizer.tres" id="3_rrijn"]
 [ext_resource type="Script" path="res://player/HUD.gd" id="4_060t8"]
 [ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="4_ix1b3"]
 [ext_resource type="Script" path="res://ui/pulse.gd" id="5_fqd27"]
@@ -223,6 +224,12 @@ transform = Transform3D(1, 0, 0, 9.31323e-10, 1, 2.98023e-08, -9.31323e-10, 2.98
 [node name="model" parent="pivot/Camera3D" instance=ExtResource("1_cv616")]
 transform = Transform3D(-1, 8.47516e-08, -2.14454e-08, 1.1827e-16, -0.245307, -0.969445, -8.74228e-08, -0.969446, 0.245307, -0.007, -0.386, -0.297)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="pivot/Camera3D/model"]
+transform = Transform3D(-1, -9.31325e-10, -8.64914e-08, 8.40772e-08, -0.245307, -0.969445, -2.03141e-08, -0.969446, 0.245307, -0.00699997, 0.400055, -0.0618355)
+stream = ExtResource("3_rrijn")
+max_polyphony = 3
+bus = &"SFX"
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,7 +376,7 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 181.0
 one_shot = true
 autostart = true
 

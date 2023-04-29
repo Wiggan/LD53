@@ -4,9 +4,14 @@ extends RigidBody3D
 
 
 @onready var available_packages = [
-	$Drone/Package1, $Drone/Package2
+	$Drone/Package1, $Drone/Package2, $Drone/Package3,
 ]
 
+func set_speed(speed):
+	# Yeah, don't even ask
+	$AudioStreamPlayer3D.pitch_scale += speed
+	$Drone/AnimationPlayer.speed_scale += speed
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if randf() < chance_to_drop_loot:
@@ -19,6 +24,7 @@ func shot():
 	top_level = true
 	contact_monitor = true
 	apply_torque_impulse(Vector3(randf_range(-5, 5), randf_range(-5, 5), randf_range(-5, 5)))
+	$AudioStreamPlayer3D/AnimationPlayer.play("shot")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -49,10 +55,13 @@ func _on_body_entered(body):
 		elif $Drone/Package3.visible:
 			Globals.score += 60
 			Globals.big += 1
-		
+			
+		$CPUParticles3D/AudioStreamPlayer3D2.play()
+		$AudioStreamPlayer3D/AnimationPlayer.stop()
 		$CPUParticles3D.emitting = true
 		$CPUParticles3D.top_level = true
-		$Decal.global_position = global_position
-		$Decal.global_rotation_degrees = Vector3(0, randf()*360, 0)
-		$Decal.visible = true
-		$Decal.reparent(get_parent())
+		if $Decal:
+			$Decal.global_position = global_position
+			$Decal.global_rotation_degrees = Vector3(0, randf()*360, 0)
+			$Decal.visible = true
+			$Decal.reparent(get_parent())

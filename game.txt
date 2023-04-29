@@ -12,7 +12,7 @@ assets:
 	
 sfx:
 	menu click
-	Shoot net
+	Shoot net x
 	drone flying
 	drone crashing
 	drone getting past?
@@ -24,9 +24,11 @@ music:
 	game music
 	
 features:
-	score
+	score x
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
 	how to play - explain boxes (small delivery, big delivery, upgrades) 
 	aim - maybe with distance marks for gravity compensation? x
 	cursor x
 	UI x
+	Some recoil
+	add a car that the gun is mounted on?

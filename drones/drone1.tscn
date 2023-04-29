@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhncy13552n1u"]
+[gd_scene load_steps=27 format=3 uid="uid://bhncy13552n1u"]
 
 [ext_resource type="ArrayMesh" uid="uid://fkymxtt6t0e7" path="res://drones/model_Cube004.res" id="1_k4ba4"]
 [ext_resource type="Script" path="res://drones/drone.gd" id="1_teywr"]
@@ -7,7 +7,10 @@
 [ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="4_uhxgm"]
 [ext_resource type="Material" uid="uid://ddrg88dsc1usm" path="res://material/Material.tres" id="6_aaej1"]
 [ext_resource type="ArrayMesh" uid="uid://pjyul0e2ouqf" path="res://packages/model_Cube006.res" id="6_ptwcs"]
+[ext_resource type="AudioStream" uid="uid://d1u1arqdttkq7" path="res://drones/explosion.wav" id="8_4lgfg"]
 [ext_resource type="Texture2D" uid="uid://cs050b4rvqjja" path="res://drones/crash.png" id="8_mspjc"]
+[ext_resource type="AudioStream" uid="uid://cjiqspp47stak" path="res://drones/drone_loop.wav" id="9_i46l1"]
+[ext_resource type="AudioStream" uid="uid://b64ivffq22v24" path="res://drones/drone_hit.wav" id="10_ajfxi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_phjin"]
 radius = 1.88892
@@ -230,6 +233,29 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.500734, 0.772394, 1)
 colors = PackedColorArray(1, 0.827451, 0, 0, 1, 0.231373, 0, 1, 1, 0, 0, 1, 0.286275, 0.286275, 0.286275, 0)
 
+[sub_resource type="Animation" id="Animation_i06dc"]
+resource_name = "shot"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_ajfxi")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m47b8"]
+_data = {
+"shot": SubResource("Animation_i06dc")
+}
+
 [node name="Drone1" type="RigidBody3D"]
 collision_layer = 2
 mass = 10.0
@@ -333,10 +359,27 @@ scale_amount_max = 3.55
 scale_amount_curve = SubResource("Curve_1o5k8")
 color_ramp = SubResource("Gradient_y5jc6")
 
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="CPUParticles3D"]
+stream = ExtResource("8_4lgfg")
+unit_size = 26.72
+pitch_scale = 0.66
+bus = &"SFX"
+
 [node name="Decal" type="Decal" parent="."]
 top_level = true
 visible = false
 size = Vector3(9, 9, 9)
 texture_albedo = ExtResource("8_mspjc")
+cull_mask = 1048574
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_i46l1")
+autoplay = true
+bus = &"Drone"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AudioStreamPlayer3D"]
+libraries = {
+"": SubResource("AnimationLibrary_m47b8")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

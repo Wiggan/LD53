@@ -22,6 +22,7 @@ func _ready():
 func create_drone():
 	var selected_drone = available_drones.pick_random()
 	drone = selected_drone.instantiate()
+	drone.set_speed(speed)
 	$PathFollow3D.add_child(drone)
 
 func drone_reached_destination():
