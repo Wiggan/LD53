@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhncy13552n1u"]
+[gd_scene load_steps=15 format=3 uid="uid://bhncy13552n1u"]
 
 [ext_resource type="ArrayMesh" uid="uid://fkymxtt6t0e7" path="res://drones/model_Cube004.res" id="1_k4ba4"]
+[ext_resource type="Script" path="res://drones/drone.gd" id="1_teywr"]
 [ext_resource type="ArrayMesh" uid="uid://bnvm4ll2u1nqn" path="res://drones/model_Cube005.res" id="2_j78r8"]
 [ext_resource type="ArrayMesh" uid="uid://buci72fwaetol" path="res://packages/model_Cube001.res" id="3_aoh68"]
 [ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="4_uhxgm"]
@@ -187,6 +188,7 @@ inertia = Vector3(0.42, 0.25, 0.33)
 gravity_scale = 4.46
 freeze = true
 linear_damp = 0.009
+script = ExtResource("1_teywr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_phjin")
@@ -243,6 +245,7 @@ skeleton = NodePath("../..")
 
 [node name="Package2" type="MeshInstance3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314488, -1.25105, -0.0217217)
+visible = false
 mesh = ExtResource("4_uhxgm")
 skeleton = NodePath("../..")
 
@@ -252,7 +255,8 @@ visible = false
 mesh = ExtResource("5_1gpwx")
 skeleton = NodePath("../..")
 
-[node name="ModelCube006" type="MeshInstance3D" parent="Drone"]
+[node name="LootBox" type="MeshInstance3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
+visible = false
 mesh = ExtResource("6_ptwcs")
 skeleton = NodePath("../..")

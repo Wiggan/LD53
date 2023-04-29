@@ -25,6 +25,6 @@ features:
 	intro - Somniac LTD is pushing drugs on mankind, stop their deliveries and make people wake up again.
 	upgrades - reload time, net impulse, net size?
 	how to play - explain boxes (small delivery, big delivery, upgrades)
-	aim
+	aim - maybe with distance marks for gravity compensation?
 	cursor
 	

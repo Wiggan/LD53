@@ -75,7 +75,11 @@ transform = Transform3D(-0.993276, 0.0782962, -0.0852363, 3.72528e-09, 0.73645, 
 tilt_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D"]
-autoplay = "fly"
 libraries = {
 "": SubResource("AnimationLibrary_o88kx")
 }
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

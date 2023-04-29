@@ -96,14 +96,14 @@ shape = SubResource("SphereShape3D_y8o0h")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="net/Armature" index="0"]
-bones/1/position = Vector3(1.43481, -0.228157, -1.05422)
-bones/2/position = Vector3(-0.466997, 0.0293552, -1.69623)
-bones/3/position = Vector3(-1.74696, -0.140152, -0.574349)
-bones/4/position = Vector3(-1.22455, 0.0978416, 1.03089)
-bones/5/position = Vector3(0.42273, 0.213807, 1.68871)
-bones/6/position = Vector3(1.42471, 0.0237729, 0.398443)
-bones/7/position = Vector3(0.0124308, -1.7576, -0.0438689)
-bones/7/rotation = Quaternion(0.0131266, 0.0770899, 0.000927037, 0.996937)
+bones/1/position = Vector3(1.50717, -0.299286, -1.07821)
+bones/2/position = Vector3(-0.437849, 0.148851, -1.65206)
+bones/3/position = Vector3(-1.79552, -0.114129, -0.561278)
+bones/4/position = Vector3(-1.21425, 0.00664302, 1.1221)
+bones/5/position = Vector3(0.578229, 0.123033, 1.72248)
+bones/6/position = Vector3(1.35893, 0.109918, 0.305444)
+bones/7/position = Vector3(0.0150116, -1.70575, -0.0467158)
+bones/7/rotation = Quaternion(0.014501, 0.0274658, 0.000993111, 0.999517)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="net"]
 autoplay = "spin"
@@ -120,6 +120,12 @@ parameters/Transition/current_state = "state_1"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 1
 
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]
 
 [editable path="net"]

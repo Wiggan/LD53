@@ -27,3 +27,7 @@ func _on_body_entered(body:RigidBody3D):
 	call_deferred("reparent", body)
 	call_deferred("tween_to_parent")
 	
+
+
+func _on_free_timer_timeout():
+	queue_free()
