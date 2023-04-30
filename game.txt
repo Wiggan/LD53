@@ -9,3 +9,9 @@ sfx:
 
 features:
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
+
+polish:
+	format floats
+	More level behind the player?
+	Sign more readable
+	printscreens

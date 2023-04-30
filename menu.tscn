@@ -282,7 +282,7 @@ script = ExtResource("2_v2y31")
 clip_contents = false
 layout_mode = 2
 theme = ExtResource("1_laoeq")
-theme_override_font_sizes/normal_font_size = 89
+theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]Ensomniac[/center]"
 fit_content = true
@@ -328,7 +328,7 @@ libraries = {
 
 [node name="HSeparator" type="HSeparator" parent="Menu"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 9
 
 [node name="GridContainer" type="GridContainer" parent="Menu"]
 process_mode = 2

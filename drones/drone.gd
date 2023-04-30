@@ -37,7 +37,7 @@ func _process(_delta):
 	pass
 
 const COOLDOWN_PROBABILITY = 0.3 
-const IMPULSE_PROBABILITY = 0.3
+const IMPULSE_PROBABILITY = 0.4
 
 func _on_body_entered(body):
 	if body.collision_layer & 1: # Feels like a bug in collision layers...
@@ -47,9 +47,9 @@ func _on_body_entered(body):
 			if randf() < COOLDOWN_PROBABILITY:
 				Globals.net_cooldown *= 0.8
 			elif randf() < IMPULSE_PROBABILITY:
-				Globals.net_impulse *= 1.2
+				Globals.net_impulse += 10
 			else:
-				Globals.net_scale *= 1.2
+				Globals.net_scale += 0.1
 			Globals.score += 20
 			Globals.loot_box += 1
 		elif $Drone/Package1.visible:
