@@ -1,7 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkpdn4s7a0bm"]
+[gd_scene load_steps=13 format=3 uid="uid://cgkpdn4s7a0bm"]
 
 [ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="1_laoeq"]
+[ext_resource type="PackedScene" uid="uid://3sce2yf3i413" path="res://how_to_play.tscn" id="2_0a5th"]
 [ext_resource type="Script" path="res://menu.gd" id="2_v2y31"]
+
+[sub_resource type="Gradient" id="Gradient_vlkue"]
+colors = PackedColorArray(0.482353, 0.447059, 0.262745, 1, 0.407843, 0.760784, 0.827451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vx6du"]
+gradient = SubResource("Gradient_vlkue")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_mgs3w"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.760784, 0.827451, 0.407843, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ghkqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jww5v"]
+_data = {
+"RESET": SubResource("Animation_ghkqe"),
+"new_animation": SubResource("Animation_mgs3w")
+}
 
 [sub_resource type="Animation" id="Animation_6tgr0"]
 length = 0.001
@@ -27,7 +73,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.87451)]
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.219608)]
 }
 
 [sub_resource type="Animation" id="Animation_qcj3v"]
@@ -36,26 +94,26 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.2, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.87451)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath("../TextureRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.219608)]
 }
 
 [sub_resource type="Animation" id="Animation_6bwak"]
@@ -83,7 +141,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.87451), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.219608), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t75vd"]
@@ -100,6 +170,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_laoeq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 2
@@ -109,7 +180,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.87451)
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.219608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_vx6du")
 
 [node name="Menu" type="VBoxContainer" parent="."]
 process_mode = 3
@@ -131,16 +212,57 @@ theme = ExtResource("1_laoeq")
 theme_override_constants/separation = 23
 script = ExtResource("2_v2y31")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("1_laoeq")
+theme_override_font_sizes/normal_font_size = 89
+bbcode_enabled = true
+text = "[center]Ensomniac[/center]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/RichTextLabel"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_jww5v")
+}
+
 [node name="Start" type="Button" parent="Menu"]
 process_mode = 2
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Start"
 
 [node name="Resume" type="Button" parent="Menu"]
 process_mode = 2
 visible = false
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Resume"
+
+[node name="HowToPlay" type="Button" parent="Menu"]
+process_mode = 2
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "How To Play"
+
+[node name="Exit" type="Button" parent="Menu"]
+process_mode = 2
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+autoplay = "fade_in"
+libraries = {
+"": SubResource("AnimationLibrary_t75vd")
+}
+
+[node name="HSeparator" type="HSeparator" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 57
 
 [node name="GridContainer" type="GridContainer" parent="Menu"]
 process_mode = 2
@@ -173,19 +295,14 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Exit" type="Button" parent="Menu"]
-process_mode = 2
-layout_mode = 2
-text = "Exit"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-autoplay = "fade_in"
-libraries = {
-"": SubResource("AnimationLibrary_t75vd")
-}
+[node name="HowToPlay" parent="." instance=ExtResource("2_0a5th")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Menu/Start" to="Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Resume" to="Menu" method="resume"]
+[connection signal="pressed" from="Menu/HowToPlay" to="Menu" method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="Menu" method="_on_exit_pressed"]
 [connection signal="value_changed" from="Menu/GridContainer/SensitivitySlider" to="Menu" method="_on_sensitivity_slider_value_changed"]
 [connection signal="value_changed" from="Menu/GridContainer/AudioVolumeSlider" to="Menu" method="_on_audio_volume_slider_value_changed"]
-[connection signal="pressed" from="Menu/Exit" to="Menu" method="_on_exit_pressed"]

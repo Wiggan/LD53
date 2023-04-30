@@ -1,0 +1,408 @@
+[gd_scene load_steps=20 format=3 uid="uid://3sce2yf3i413"]
+
+[ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="1_cw34m"]
+[ext_resource type="PackedScene" uid="uid://co4sklie0l7o5" path="res://ui/tutorial.glb" id="1_eeter"]
+[ext_resource type="Script" path="res://how_to_play.gd" id="2_ypotv"]
+[ext_resource type="ArrayMesh" uid="uid://buci72fwaetol" path="res://packages/model_Cube001.res" id="3_mfxt5"]
+[ext_resource type="Script" path="res://ui/update.gd" id="4_qnymf"]
+[ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="5_v3364"]
+[ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="6_v6im2"]
+[ext_resource type="ArrayMesh" uid="uid://pjyul0e2ouqf" path="res://packages/model_Cube006.res" id="7_vjw3x"]
+
+[sub_resource type="Gradient" id="Gradient_1wiis"]
+colors = PackedColorArray(0.482353, 0.447059, 0.262745, 1, 0.407843, 0.760784, 0.827451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_17rs2"]
+gradient = SubResource("Gradient_1wiis")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Environment" id="Environment_mwou8"]
+
+[sub_resource type="World3D" id="World3D_bkego"]
+environment = SubResource("Environment_mwou8")
+
+[sub_resource type="Animation" id="Animation_nlf5a"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimArrows:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05)]
+}
+
+[sub_resource type="Animation" id="Animation_svrt2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimArrows:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fm2p"]
+_data = {
+"RESET": SubResource("Animation_svrt2"),
+"new_animation": SubResource("Animation_nlf5a")
+}
+
+[sub_resource type="Animation" id="Animation_kv4iu"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial/ShootArrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05)]
+}
+
+[sub_resource type="Animation" id="Animation_a6ikj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial/ShootArrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wbyjx"]
+_data = {
+"RESET": SubResource("Animation_a6ikj"),
+"new_animation": SubResource("Animation_kv4iu")
+}
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jixds"]
+script = ExtResource("4_qnymf")
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cw34m")
+script = ExtResource("2_ypotv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.219608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_17rs2")
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -312.5
+offset_bottom = 312.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Aim" type="Label" parent="Controls"]
+layout_mode = 2
+text = "AIM"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Controls/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(255, 255)
+render_target_update_mode = 4
+
+[node name="tutorial" parent="Controls/SubViewportContainer/SubViewport" instance=ExtResource("1_eeter")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="ShootArrow" parent="Controls/SubViewportContainer/SubViewport/tutorial" index="1"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="Controls/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.47397, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Controls/SubViewportContainer/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Controls/SubViewportContainer/SubViewport"]
+root_node = NodePath("../tutorial")
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_0fm2p")
+}
+
+[node name="HSeparator" type="HSeparator" parent="Controls"]
+custom_minimum_size = Vector2(0, 27.481)
+layout_mode = 2
+
+[node name="Fire" type="Label" parent="Controls"]
+layout_mode = 2
+text = "FIRE"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Controls/SubViewportContainer2"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(255, 255)
+render_target_update_mode = 4
+
+[node name="tutorial" parent="Controls/SubViewportContainer2/SubViewport" instance=ExtResource("1_eeter")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 56.6636, 0, 0)
+
+[node name="AimArrows" parent="Controls/SubViewportContainer2/SubViewport/tutorial" index="0"]
+visible = false
+
+[node name="ShootArrow" parent="Controls/SubViewportContainer2/SubViewport/tutorial" index="1"]
+transform = Transform3D(-0.664465, 0, 0.747319, 0, 1, 0, -0.747319, 0, -0.664465, 3.60501, 0, 4.68019)
+
+[node name="Camera3D" type="Camera3D" parent="Controls/SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56.6636, 5.47397, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Controls/SubViewportContainer2/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controls/SubViewportContainer2/SubViewport"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_wbyjx")
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -263.0
+offset_right = 244.0
+offset_bottom = 263.0
+grow_vertical = 2
+columns = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901, 0, -2.86139)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GridContainer/SubViewportContainer/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="ModelCube001" type="MeshInstance3D" parent="GridContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.953, 0, -5.685)
+mesh = ExtResource("3_mfxt5")
+skeleton = NodePath("../../../../..")
+
+[node name="Small" type="RichTextLabel" parent="GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "20 doses"
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_jixds")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901, 0, -2.86139)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GridContainer/SubViewportContainer2/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="ModelCube002" type="MeshInstance3D" parent="GridContainer/SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.953, 0, -5.685)
+mesh = ExtResource("5_v3364")
+skeleton = NodePath("../../../../..")
+
+[node name="Cardboard" type="RichTextLabel" parent="GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "40 doses"
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_jixds")]
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer3"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer3/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901, 0, -2.86139)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GridContainer/SubViewportContainer3/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="ModelCube" type="MeshInstance3D" parent="GridContainer/SubViewportContainer3/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.953, 0, -5.685)
+mesh = ExtResource("6_v6im2")
+skeleton = NodePath("../../../../..")
+
+[node name="Big" type="RichTextLabel" parent="GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "60 doses"
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_jixds")]
+
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer4"]
+own_world_3d = true
+world_3d = SubResource("World3D_bkego")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer4/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901, 0, -2.86139)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GridContainer/SubViewportContainer4/SubViewport/Camera3D"]
+light_energy = 5.15
+omni_range = 31.625
+
+[node name="ModelCube006" type="MeshInstance3D" parent="GridContainer/SubViewportContainer4/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.953, 0, -5.685)
+mesh = ExtResource("7_vjw3x")
+skeleton = NodePath("../../../../..")
+
+[node name="LootBox" type="RichTextLabel" parent="GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "20 doses and upgrades"
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_jixds")]
+
+[node name="Small" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -238.0
+offset_top = 29.0
+offset_right = 260.0
+offset_bottom = 360.0
+grow_horizontal = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]HOW TO PLAY[/center]
+
+Intercept the drones flying drugs from the Ensomniac Ltd. factory.
+You have 3 minutes."
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_jixds")]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -87.0
+offset_right = 127.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "OK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="Controls/SubViewportContainer/SubViewport/tutorial"]
+[editable path="Controls/SubViewportContainer2/SubViewport/tutorial"]

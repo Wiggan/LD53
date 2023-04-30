@@ -2,19 +2,9 @@ palette: https://lospec.com/palette-list/cc-29
 fonts:
 	https://fonts.google.com/specimen/Tourney?preview.text=Ensomniac&preview.text_type=custom
 	
-assets:
-	2 drones x
-	3 packages x
-	net gun x
-	net (4 balls with wireframe plane, animated?) x
-	factory building x
-	trees x
 	
 sfx:
 	menu click
-	Shoot net x
-	drone flying x
-	drone crashing x
 	drone getting past?
 	upgrade installed
 	time running out
@@ -24,12 +14,8 @@ music:
 	game music
 	
 features:
-	score x
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
 	how to play - explain boxes (small delivery, big delivery, upgrades) 
-	aim - maybe with distance marks for gravity compensation? x
-	cursor x
-	UI x
 	Some recoil
 	add a car that the gun is mounted on?
 	

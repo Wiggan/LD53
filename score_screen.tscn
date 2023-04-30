@@ -88,10 +88,10 @@ _data = {
 "new_animation": SubResource("Animation_imkfd")
 }
 
-[sub_resource type="Environment" id="Environment_mwou8"]
+[sub_resource type="Environment" id="Environment_a17ed"]
 
 [sub_resource type="World3D" id="World3D_1fd4o"]
-environment = SubResource("Environment_mwou8")
+environment = SubResource("Environment_a17ed")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jixds"]
 script = ExtResource("6_rw8mb")

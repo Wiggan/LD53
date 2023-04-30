@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+@onready var sensitivity_slider = $"GridContainer/SensitivitySlider"
+@onready var audio_volume_slider = $"GridContainer/AudioVolumeSlider"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,10 +12,10 @@ func _ready():
 		$Start.visible = false
 		$Resume.visible = true
 		resume()
-	$GridContainer/AudioVolumeSlider.value = Globals.volume
+	audio_volume_slider.value = Globals.volume
 	_on_audio_volume_slider_value_changed(Globals.volume)
-	$GridContainer/SensitivitySlider.value = Globals.mouse_sensitivity/0.01
-	_on_sensitivity_slider_value_changed($GridContainer/SensitivitySlider.value)
+	sensitivity_slider.value = Globals.mouse_sensitivity/0.01
+	_on_sensitivity_slider_value_changed(sensitivity_slider.value)
 
 func _on_audio_volume_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(value))
@@ -49,6 +52,7 @@ func pause():
 func resume():
 	if Globals.game_started:
 		$"AnimationPlayer".play("to_game")
+		$"../HowToPlay".visible = false
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		get_tree().paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -63,3 +67,5 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 
+func _on_how_to_play_pressed():
+	$"../HowToPlay".visible = true
