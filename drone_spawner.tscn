@@ -59,21 +59,6 @@ tracks/1/keys = {
 "method": &"drone_reached_destination"
 }]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../destination")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_j600w")
-}],
-"times": PackedFloat32Array(7.8)
-}
-tracks/2/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o88kx"]
 _data = {
@@ -87,7 +72,7 @@ curve = SubResource("Curve3D_nwyq2")
 script = ExtResource("1_xx5wx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.869388, 0.489475, -0.067617, 0.492582, 0.869322, -0.0404491, 0.0389821, -0.068473, -0.996891, -23.9614, 0.410309, -187.027)
+transform = Transform3D(-0.869387, 0.489475, -0.067617, 0.492582, 0.869322, -0.0404491, 0.038982, -0.068473, -0.996891, -23.9614, 0.410319, -187.027)
 progress = 243.837
 tilt_enabled = false
 
@@ -100,6 +85,7 @@ libraries = {
 one_shot = true
 
 [node name="destination" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2995, 0, -198.883)
 stream = ExtResource("2_j600w")
 unit_size = 27.01
 

@@ -2,6 +2,7 @@ extends VBoxContainer
 
 @onready var sensitivity_slider = $"GridContainer/SensitivitySlider"
 @onready var audio_volume_slider = $"GridContainer/AudioVolumeSlider"
+@onready var music_volume_slider = $GridContainer/MusicVolumeSlider
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +15,8 @@ func _ready():
 		resume()
 	audio_volume_slider.value = Globals.volume
 	_on_audio_volume_slider_value_changed(Globals.volume)
+	music_volume_slider.value = Globals.music
+	_on_music_volume_slider_value_changed(Globals.music)
 	sensitivity_slider.value = Globals.mouse_sensitivity/0.01
 	_on_sensitivity_slider_value_changed(sensitivity_slider.value)
 
@@ -22,7 +25,7 @@ func _on_audio_volume_slider_value_changed(value):
 	Globals.volume = value
 
 func linear2db(percent):
-	return 10*log(percent/100)/log(10)
+	return 10*log(percent)/log(10)
 
 
 func _on_sensitivity_slider_value_changed(value):
@@ -69,3 +72,9 @@ func _on_exit_pressed():
 
 func _on_how_to_play_pressed():
 	$"../HowToPlay".visible = true
+
+
+func _on_music_volume_slider_value_changed(value):
+	var db = linear2db(value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), db)
+	Globals.music = value

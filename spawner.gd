@@ -22,12 +22,13 @@ func _ready():
 func create_drone():
 	var selected_drone = available_drones.pick_random()
 	drone = selected_drone.instantiate()
-	drone.set_speed(speed)
+	$PathFollow3D/AnimationPlayer.speed_scale *= drone.set_speed(speed) #omg... ugliest yet
 	$PathFollow3D.add_child(drone)
 
 func drone_reached_destination():
 	drone.queue_free()
 	if not drone.top_level:
+		$destination.play()
 		print("Drone reached its target")
 
 func _on_start_timer_timeout():

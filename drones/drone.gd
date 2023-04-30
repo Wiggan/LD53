@@ -1,19 +1,25 @@
 extends RigidBody3D
 
 @export_range(0, 1) var chance_to_drop_loot: float = 0
-
+@export var can_carry_large_box: bool = false
 
 @onready var available_packages = [
-	$Drone/Package1, $Drone/Package2, $Drone/Package3,
+	$Drone/Package1, $Drone/Package2
 ]
 
 func set_speed(speed):
 	# Yeah, don't even ask
 	$AudioStreamPlayer3D.pitch_scale += speed
 	$Drone/AnimationPlayer.speed_scale += speed
+	if can_carry_large_box:
+		return 1
+	else:
+		return 0.75 # make drone1 slower...
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if can_carry_large_box:
+		available_packages.append($Drone/Package3)
 	if randf() < chance_to_drop_loot:
 		$Drone/LootBox.visible = true
 	else:

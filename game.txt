@@ -1,19 +1,11 @@
 palette: https://lospec.com/palette-list/cc-29
 fonts:
 	https://fonts.google.com/specimen/Tourney?preview.text=Ensomniac&preview.text_type=custom
-	
-	
+
 sfx:
-	menu click
-	drone getting past?
 	upgrade installed
-	time running out
-	
-music:
-	menu music
-	game music
-	
+	Swisch for texts in score screen
+	Reload sound?
+
 features:
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
-	Some recoil
-	

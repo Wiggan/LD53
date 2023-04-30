@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://3sce2yf3i413"]
+[gd_scene load_steps=22 format=3 uid="uid://3sce2yf3i413"]
 
 [ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="1_cw34m"]
 [ext_resource type="PackedScene" uid="uid://co4sklie0l7o5" path="res://ui/tutorial.glb" id="1_eeter"]
 [ext_resource type="Script" path="res://how_to_play.gd" id="2_ypotv"]
 [ext_resource type="ArrayMesh" uid="uid://buci72fwaetol" path="res://packages/model_Cube001.res" id="3_mfxt5"]
+[ext_resource type="Texture2D" uid="uid://dvblkdrwcea2d" path="res://ui/indicator.png" id="4_ggdh6"]
 [ext_resource type="Script" path="res://ui/update.gd" id="4_qnymf"]
 [ext_resource type="ArrayMesh" uid="uid://d0rrwovfwqy6i" path="res://packages/model_Cube002.res" id="5_v3364"]
 [ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="6_v6im2"]
@@ -21,6 +22,21 @@ fill_from = Vector2(1, 1)
 [sub_resource type="World3D" id="World3D_bkego"]
 environment = SubResource("Environment_mwou8")
 
+[sub_resource type="Animation" id="Animation_svrt2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimArrows:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_nlf5a"]
 resource_name = "new_animation"
 loop_mode = 1
@@ -37,12 +53,18 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05)]
 }
 
-[sub_resource type="Animation" id="Animation_svrt2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fm2p"]
+_data = {
+"RESET": SubResource("Animation_svrt2"),
+"new_animation": SubResource("Animation_nlf5a")
+}
+
+[sub_resource type="Animation" id="Animation_a6ikj"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AimArrows:scale")
+tracks/0/path = NodePath("tutorial/ShootArrow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,11 +73,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fm2p"]
-_data = {
-"RESET": SubResource("Animation_svrt2"),
-"new_animation": SubResource("Animation_nlf5a")
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorial/Decal:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kv4iu"]
@@ -74,8 +102,10 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05)]
 }
 
-[sub_resource type="Animation" id="Animation_a6ikj"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_5t34h"]
+resource_name = "new_animation_2"
+length = 1.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,16 +113,29 @@ tracks/0/path = NodePath("tutorial/ShootArrow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorial/Decal:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(4.59479, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wbyjx"]
 _data = {
 "RESET": SubResource("Animation_a6ikj"),
-"new_animation": SubResource("Animation_kv4iu")
+"new_animation": SubResource("Animation_kv4iu"),
+"new_animation_2": SubResource("Animation_5t34h")
 }
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jixds"]
@@ -153,6 +196,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_bkego")
 transparent_bg = true
 handle_input_locally = false
+screen_space_aa = 1
 size = Vector2i(255, 255)
 render_target_update_mode = 4
 
@@ -166,7 +210,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.47397, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Controls/SubViewportContainer/SubViewport/Camera3D"]
-light_energy = 5.15
+light_energy = 9.112
 omni_range = 31.625
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Controls/SubViewportContainer/SubViewport"]
@@ -193,6 +237,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_bkego")
 transparent_bg = true
 handle_input_locally = false
+screen_space_aa = 1
 size = Vector2i(255, 255)
 render_target_update_mode = 4
 
@@ -204,16 +249,23 @@ visible = false
 
 [node name="ShootArrow" parent="Controls/SubViewportContainer2/SubViewport/tutorial" index="1"]
 transform = Transform3D(-0.664465, 0, 0.747319, 0, 1, 0, -0.747319, 0, -0.664465, 3.60501, 0, 4.68019)
+visible = false
+
+[node name="Decal" type="Decal" parent="Controls/SubViewportContainer2/SubViewport/tutorial"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.339478, 0, 0.942999)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("4_ggdh6")
+modulate = Color(1, 0, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="Controls/SubViewportContainer2/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56.6636, 5.47397, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Controls/SubViewportContainer2/SubViewport/Camera3D"]
-light_energy = 5.15
+light_energy = 9.112
 omni_range = 31.625
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Controls/SubViewportContainer2/SubViewport"]
-autoplay = "new_animation"
+autoplay = "new_animation_2"
 libraries = {
 "": SubResource("AnimationLibrary_wbyjx")
 }

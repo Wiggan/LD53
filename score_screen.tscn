@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c45ioqn00185v"]
+[gd_scene load_steps=33 format=3 uid="uid://c45ioqn00185v"]
 
 [ext_resource type="PackedScene" uid="uid://dxxuqbiqx3g1b" path="res://environment/model.glb" id="1_re2oa"]
 [ext_resource type="Script" path="res://score_screen.gd" id="4_cx5v0"]
@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="7_0bxda"]
 [ext_resource type="AudioStream" uid="uid://dpq3fbfnmtdbm" path="res://studioone/ld53(2)/Mixdown/menu.wav" id="11_voh7a"]
 [ext_resource type="AudioStream" uid="uid://c34d51feef8up" path="res://studioone/ld53(2)/Mixdown/click.wav" id="12_17bpi"]
+[ext_resource type="AudioStream" uid="uid://dyjjcd8hlq4tx" path="res://studioone/ld53(2)/Mixdown/score_screen.ogg" id="13_m580x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2i1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -150,6 +151,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_2h3gt"]
 resource_name = "fade_in"
@@ -194,6 +207,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"restart_game"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_il3ju"]
@@ -463,9 +488,11 @@ text = "Try again!"
 
 [node name="hover" type="AudioStreamPlayer" parent="Control/Button"]
 stream = ExtResource("11_voh7a")
+bus = &"Menu"
 
 [node name="click" type="AudioStreamPlayer" parent="Control/Button"]
 stream = ExtResource("12_17bpi")
+bus = &"Menu"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -490,6 +517,11 @@ preprocess = 600.0
 visibility_aabb = AABB(-1268.32, -618.584, -1308.68, 2535.86, 1243.81, 2619.5)
 process_material = SubResource("ParticleProcessMaterial_8mp2p")
 draw_pass_1 = SubResource("SphereMesh_db11c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_m580x")
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Control/Button" to="Control/Button/hover" method="play"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
