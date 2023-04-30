@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk3vqf0pdd8ak"]
+[gd_scene load_steps=7 format=3 uid="uid://bk3vqf0pdd8ak"]
 
 [ext_resource type="Script" path="res://spawner.gd" id="1_xx5wx"]
+[ext_resource type="AudioStream" uid="uid://esbwxrxi74i7" path="res://studioone/ld53(2)/Mixdown/got_passed.wav" id="2_j600w"]
 
 [sub_resource type="Curve3D" id="Curve3D_nwyq2"]
 resource_local_to_scene = true
@@ -58,6 +59,21 @@ tracks/1/keys = {
 "method": &"drone_reached_destination"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../destination")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_j600w")
+}],
+"times": PackedFloat32Array(7.8)
+}
+tracks/2/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o88kx"]
 _data = {
@@ -71,7 +87,8 @@ curve = SubResource("Curve3D_nwyq2")
 script = ExtResource("1_xx5wx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.993276, 0.0782962, -0.0852363, 3.72528e-09, 0.73645, 0.67649, 0.115739, 0.671942, -0.731502, 3.28033, -0.531244, 3.42546)
+transform = Transform3D(-0.869388, 0.489475, -0.067617, 0.492582, 0.869322, -0.0404491, 0.0389821, -0.068473, -0.996891, -23.9614, 0.410309, -187.027)
+progress = 243.837
 tilt_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D"]
@@ -81,5 +98,9 @@ libraries = {
 
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="destination" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_j600w")
+unit_size = 27.01
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

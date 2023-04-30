@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgkpdn4s7a0bm"]
+[gd_scene load_steps=16 format=3 uid="uid://cgkpdn4s7a0bm"]
 
 [ext_resource type="Theme" uid="uid://hur5ivph54t0" path="res://ui/theme.tres" id="1_laoeq"]
 [ext_resource type="PackedScene" uid="uid://3sce2yf3i413" path="res://how_to_play.tscn" id="2_0a5th"]
+[ext_resource type="Script" path="res://audio_manager.gd" id="2_oursy"]
 [ext_resource type="Script" path="res://menu.gd" id="2_v2y31"]
+[ext_resource type="AudioStream" uid="uid://dpq3fbfnmtdbm" path="res://studioone/ld53(2)/Mixdown/menu.wav" id="5_38q33"]
+[ext_resource type="AudioStream" uid="uid://c34d51feef8up" path="res://studioone/ld53(2)/Mixdown/click.wav" id="5_li5wm"]
 
 [sub_resource type="Gradient" id="Gradient_vlkue"]
 colors = PackedColorArray(0.482353, 0.447059, 0.262745, 1, 0.407843, 0.760784, 0.827451, 1)
@@ -171,6 +174,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_laoeq")
+script = ExtResource("2_oursy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 2
@@ -229,26 +233,26 @@ libraries = {
 "": SubResource("AnimationLibrary_jww5v")
 }
 
-[node name="Start" type="Button" parent="Menu"]
+[node name="Start" type="Button" parent="Menu" groups=["Button"]]
 process_mode = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Start"
 
-[node name="Resume" type="Button" parent="Menu"]
+[node name="Resume" type="Button" parent="Menu" groups=["Button"]]
 process_mode = 2
 visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Resume"
 
-[node name="HowToPlay" type="Button" parent="Menu"]
+[node name="HowToPlay" type="Button" parent="Menu" groups=["Button"]]
 process_mode = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "How To Play"
 
-[node name="Exit" type="Button" parent="Menu"]
+[node name="Exit" type="Button" parent="Menu" groups=["Button"]]
 process_mode = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
@@ -274,7 +278,7 @@ layout_mode = 2
 text = "Mouse Sensitivity"
 horizontal_alignment = 2
 
-[node name="SensitivitySlider" type="HSlider" parent="Menu/GridContainer"]
+[node name="SensitivitySlider" type="HSlider" parent="Menu/GridContainer" groups=["Slider"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -288,7 +292,7 @@ layout_mode = 2
 text = "Audio Volume"
 horizontal_alignment = 2
 
-[node name="AudioVolumeSlider" type="HSlider" parent="Menu/GridContainer"]
+[node name="AudioVolumeSlider" type="HSlider" parent="Menu/GridContainer" groups=["Slider"]]
 layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
@@ -299,6 +303,12 @@ value = 1.0
 process_mode = 3
 visible = false
 layout_mode = 1
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_38q33")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_li5wm")
 
 [connection signal="pressed" from="Menu/Start" to="Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Resume" to="Menu" method="resume"]

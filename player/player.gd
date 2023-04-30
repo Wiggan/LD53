@@ -36,3 +36,7 @@ func _on_timer_timeout():
 var score_screen = preload("res://score_screen.tscn")
 func go_to_score_screen():
 	get_tree().change_scene_to_packed(score_screen)
+
+
+func _on_net_cooldown_timer_timeout():
+	$pivot/Camera3D/model/reload.play()

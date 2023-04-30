@@ -387,7 +387,7 @@ scroll_active = false
 shortcut_keys_enabled = false
 custom_effects = [SubResource("RichTextEffect_jixds")]
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["Button"]]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

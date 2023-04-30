@@ -15,7 +15,5 @@ music:
 	
 features:
 	intro - Ensomniac Ltd. is pushing drugs on mankind, stop their deliveries and make people wake up again.
-	how to play - explain boxes (small delivery, big delivery, upgrades) 
 	Some recoil
-	add a car that the gun is mounted on?
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c45ioqn00185v"]
+[gd_scene load_steps=32 format=3 uid="uid://c45ioqn00185v"]
 
 [ext_resource type="PackedScene" uid="uid://dxxuqbiqx3g1b" path="res://environment/model.glb" id="1_re2oa"]
 [ext_resource type="Script" path="res://score_screen.gd" id="4_cx5v0"]
@@ -10,6 +10,8 @@
 [ext_resource type="ArrayMesh" uid="uid://pjyul0e2ouqf" path="res://packages/model_Cube006.res" id="6_ae52e"]
 [ext_resource type="Script" path="res://ui/update.gd" id="6_rw8mb"]
 [ext_resource type="ArrayMesh" uid="uid://boi4x4m2aasdp" path="res://packages/model_Cube.res" id="7_0bxda"]
+[ext_resource type="AudioStream" uid="uid://dpq3fbfnmtdbm" path="res://studioone/ld53(2)/Mixdown/menu.wav" id="11_voh7a"]
+[ext_resource type="AudioStream" uid="uid://c34d51feef8up" path="res://studioone/ld53(2)/Mixdown/click.wav" id="12_17bpi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2i1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -443,7 +445,8 @@ libraries = {
 "": SubResource("AnimationLibrary_lgkvh")
 }
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="Control" groups=["Button"]]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -457,6 +460,12 @@ offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Try again!"
+
+[node name="hover" type="AudioStreamPlayer" parent="Control/Button"]
+stream = ExtResource("11_voh7a")
+
+[node name="click" type="AudioStreamPlayer" parent="Control/Button"]
+stream = ExtResource("12_17bpi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -482,4 +491,6 @@ visibility_aabb = AABB(-1268.32, -618.584, -1308.68, 2535.86, 1243.81, 2619.5)
 process_material = SubResource("ParticleProcessMaterial_8mp2p")
 draw_pass_1 = SubResource("SphereMesh_db11c")
 
+[connection signal="mouse_entered" from="Control/Button" to="Control/Button/hover" method="play"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button" to="Control/Button/click" method="play"]
